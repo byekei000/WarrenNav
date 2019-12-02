@@ -1,1 +1,1 @@
-web: node app.js
+web: beefy app.js:bundle.js --live
