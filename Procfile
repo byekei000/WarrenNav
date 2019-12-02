@@ -1,1 +1,1 @@
-web: beefy app.js:bundle.js --live
+web: npm start
