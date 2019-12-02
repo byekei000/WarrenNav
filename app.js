@@ -11,7 +11,23 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', { attribution: '© Ope
 var guide = L.geoJSON(geojson).addTo(map);
 var startLngLat = [-86.00126892328261, 39.79148171548422];
 var finishLngLat = [-86.00163906812668, 39.79133538772051];
+var startpos = document.getElementById('dropdown').value;
 var marker = L.marker([startLngLat[1],startLngLat[0]]).addTo(map);
+function hi(){
+    if(startpos === "a100"){
+        startLngLat = [-86.00126892328261, 39.79148171548422];
+    } else if(startpos === "a200"){
+        startLngLat = [-86.00096315145493, 39.791840320236936];
+
+    } else if(startpos === "a300"){
+        startLngLat = [-86.00107043981552, 39.79135187537143];
+
+    } else if(startpos === "a400"){
+        startLngLat = [-86.00120455026627, 39.79065114672283];
+    }
+    var marker = L.marker([startLngLat[1],startLngLat[0]]).addTo(map);
+    updatePath(startLngLat[1],startLngLat[0]);
+}
 var start = ({
     "type": "Feature",
     "geometry": {

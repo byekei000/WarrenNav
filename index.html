@@ -10,8 +10,15 @@
             height: 100%;
         }
     </style>
+
 </head>
 <body>
+    <select id="dropdown" onchange="updateStart()">
+        <option value="a100">a100</option>
+        <option value="a200">a200</option>
+        <option value="a300">a300</option>
+        <option value="a400">a400</option>
+    </select>
     <script src="lib/utils/LineUtil.Snapping.js"></script>
     <script src="lib/utils/Marker.Snapping.js"></script>
     <script src="lib/L.Routing.js"></script>
@@ -20,4 +27,7 @@
     <script src="lib/L.Routing.Edit.js"></script>
     <div id="map" class="map"></div>
     <script src="bundle.js"></script>
+    <script>function updateStart() {
+        hi();
+    }</script>
 </body>
