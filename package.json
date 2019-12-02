@@ -9,10 +9,13 @@
     "browserify": "^16.5.0",
     "geojson-path-finder": "^1.5.2",
     "geojson-polyline": "^1.0.3",
-    "leaflet": "^1.5.1",
+    "git": "^0.1.5",
+    "heroku": "^7.35.0",
+    "leaflet": "^1.6.0",
     "leaflet-geometryutil": "^0.9.1",
     "leaflet-routing-machine": "^3.2.12",
-    "leaflet-snap": "0.0.4"
+    "leaflet-snap": "0.0.4",
+    "turf": "^3.0.14"
   },
   "devDependencies": {},
   "scripts": {
