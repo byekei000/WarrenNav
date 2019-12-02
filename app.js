@@ -2,7 +2,7 @@ require('leaflet-geometryutil');
 require('leaflet-snap');
 require('leaflet-routing-machine');
 var L = require('leaflet');
-var turf = require('@turf/turf');
+// var turf = require('@turf/turf');
 var PathFinder = require('geojson-path-finder');
 var geojson = require('./test.json');
 var pathFinder = new PathFinder(geojson, {precision: 1e-19});
