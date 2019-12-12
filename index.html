@@ -1,33 +1,33 @@
 <head>
     <title>Test</title>
     <link rel="stylesheet" href="leaflet.css">
+    <link rel="stylesheet" href="index.css">
 <!--    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />-->
 <!--    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>-->
-    <style>
-        .map {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
 </head>
 <body>
-    <select id="dropdown" onchange="updateStart()">
-        <option value="a100">a100</option>
-        <option value="a200">a200</option>
-        <option value="a300">a300</option>
-        <option value="a400">a400</option>
-    </select>
-    <script src="lib/utils/LineUtil.Snapping.js"></script>
-    <script src="lib/utils/Marker.Snapping.js"></script>
-    <script src="lib/L.Routing.js"></script>
-    <script src="lib/L.Routing.Storage.js"></script>
-    <script src="lib/L.Routing.Draw.js"></script>
-    <script src="lib/L.Routing.Edit.js"></script>
+    <div id="Sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="../index.html">Home</a>
+        <a href="../Individual_location/indLocation.html">Individual Location</a>
+        <a href="../Schedule_input/schedule.html">Schedule</a>
+        <a href="../Traffic/traffic.html">View Traffic</a>
+        <a href="../About/about.html">About</a>
+    </div>
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">
+            &#9776;
+            Menu
+        </button>
+    </div>
+    <script src="../lib/utils/LineUtil.Snapping.js"></script>
+    <script src="../lib/utils/Marker.Snapping.js"></script>
+    <script src="../lib/L.Routing.js"></script>
+    <script src="../lib/L.Routing.Storage.js"></script>
+    <script src="../lib/L.Routing.Draw.js"></script>
+    <script src="../lib/L.Routing.Edit.js"></script>
     <div id="map" class="map"></div>
     <script src="bundle.js"></script>
-    <script>function updateStart() {
-        hi();
-    }</script>
+    <script src="index.js"></script>
+
 </body>

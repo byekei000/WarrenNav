@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual Location</title>
+    <link rel="stylesheet" href="indLocation.css"/>
+</head>
+<body>
+
+    <div id="Sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="../index.html">Home</a>
+        <a href="../Individual_location/indLocation.html">Individual Location</a>
+        <a href="../Schedule_input/schedule.html">Schedule</a>
+        <a href="../Traffic/traffic.html">View Traffic</a>
+        <a href="../About/about.html">About</a>
+    </div>
+
+    <div id="main">
+        <button class="openbtn" onclick="openNav()">
+            &#9776;
+            Menu
+        </button>
+    </div>
+
+    <div id="input-stuff">
+        <section class="location-select">
+            <p style="color:#c4a747">Where are you currently located?</p>
+            <br>
+            <br>
+            <label for="Rnumber" style="color:#c4a747">Room Location</label>
+            <input type="letter" name="number" id="Rnumber" style="width: 3em" oninput="setStart()">
+        </section>
+        <br>
+        <br>
+        <section class="destination-select">
+            <p style="color:#c4a747">Where would you like to go?</p>
+            <br>
+            <br>
+            <label for="Rnumber2" style="color:#c4a747">Room Location</label>
+            <input type="letter" name="number" id="Rnumber2" style="width: 3em" oninput="setStart()">
+        </section>
+    </div>
+    <script src="indLocation.js"></script>
+</body>
+</html>
