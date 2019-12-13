@@ -12,9 +12,10 @@ var guide = L.geoJSON(geojson).addTo(map);
 var startLngLat = [-86.00126892328261, 39.79148171548422];
 var finishLngLat = [-86.00163906812668, 39.79133538772051];
 // var startPos = document.getElementById('dropdown').value;
-var marker = L.marker([startLngLat[1],startLngLat[0]]).addTo(map);
-startPos = localStorage.getItem("start");
-function hi(){
+var startMarker = L.marker([startLngLat[1],startLngLat[0]]).addTo(map);
+var finishMarker = L.marker([finishLngLat[1],finishLngLat[0]]).addTo(map);
+// startPos = localStorage.getItem("start");
+window.hi = function(startPos){
     if(startPos === "a100"){
         startLngLat = [-86.00126892328261, 39.79148171548422];
     } else if(startPos === "a200"){
@@ -24,8 +25,21 @@ function hi(){
     } else if(startPos === "a400"){
         startLngLat = [-86.00120455026627, 39.79065114672283];
     }
-    marker.setLatLng([startLngLat[1],startLngLat[0]]);
-    updatePath(startLngLat[1],startLngLat[0]);
+    startMarker.setLatLng([startLngLat[1],startLngLat[0]]);
+    updatePath(startLngLat[1], startLngLat[0], finishLngLat[1], finishLngLat[0]);
+};
+window.hello = function(finishPos){
+    if(finishPos === "a100"){
+        finishLngLat = [-86.00126892328261, 39.79148171548422];
+    } else if(finishPos === "a200"){
+        finishLngLat = [-86.00096315145493, 39.791840320236936];
+    } else if(finishPos === "a300"){
+        finishLngLat = [-86.00107043981552, 39.79135187537143];
+    } else if(finishPos === "a400"){
+        finishLngLat = [-86.00120455026627, 39.79065114672283];
+    }
+    finishMarker.setLatLng([finishLngLat[1], finishLngLat[0]]);
+    updatePath(startLngLat[1], startLngLat[0], finishLngLat[1], finishLngLat[0]);
 };
 var start = ({
     "type": "Feature",
@@ -47,17 +61,25 @@ var finish = ({
         ]
     }
 });
-L.geoJSON(finish).addTo(map);
+// L.geoJSON(finish).addTo(map);
 
-marker.snapediting = new L.Handler.MarkerSnap(map, marker);
-marker.snapediting.addGuideLayer(guide);
-marker.snapediting.enable();
-marker.on('dragend', function (e) {
-    updatePath(marker.getLatLng().lat, marker.getLatLng().lng);
+startMarker.snapediting = new L.Handler.MarkerSnap(map, startMarker);
+startMarker.snapediting.addGuideLayer(guide);
+startMarker.snapediting.enable();
+startMarker.on('dragend', function (e) {
+    updatePath(startMarker.getLatLng().lat, startMarker.getLatLng().lng, finishLngLat[1], finishLngLat[0]);
 });
 
-function updatePath(lat, lng){
-    start.geometry.coordinates = [lng,lat];
+finishMarker.snapediting = new L.Handler.MarkerSnap(map, finishMarker);
+finishMarker.snapediting.addGuideLayer(guide);
+finishMarker.snapediting.enable();
+finishMarker.on('dragend', function (e) {
+    updatePath(startLngLat[1], startLngLat[0], finishMarker.getLatLng().lat, finishMarker.getLatLng().lng);
+});
+
+function updatePath(startlat, startlng, finishlat, finishlng){
+    start.geometry.coordinates = [startlng,startlat];
+    finish.geometry.coordinates = [finishlng,finishlat];
     var path = pathFinder.findPath(start, finish);
     console.log(path);
     pathjson.geometry.coordinates = path.path;

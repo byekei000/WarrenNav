@@ -66,6 +66,9 @@ body{
     .sidebar a{ font-size: 18px;}
 }
 div .input-stuff{
+    /*background: 0;*/
+    position: relative;
+    z-index: 3;
     margin-top: 100px;
     margin-bottom: 100px;
 }
@@ -75,18 +78,23 @@ section{
     font-family: Futura, Trebuchet MS, Arial, sans-serif;
 }
 .location-select{
+    position: absolute;
+    z-index: 1;
+    right: 20px;
     text-align: center;
     border-radius: 25px;
     background: #000000;
-    padding: 20px;
     width: 300px;
     height: 200px;
 }
 .destination-select{
+    position: fixed;
+    z-index: 1;
+    margin-top: 120px;
+    right: 20px;
     text-align: center;
     border-radius: 25px;
     background: #000000;
-    padding: 20px;
     width: 300px;
     height: 200px;
 }
