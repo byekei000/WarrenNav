@@ -67,7 +67,7 @@ body{
 }
 div .input-stuff{
     /*background: 0;*/
-    position: relative;
+    position: fixed;
     z-index: 3;
     margin-top: 100px;
     margin-bottom: 100px;
