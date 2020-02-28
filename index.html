@@ -22,26 +22,21 @@
     </div>
     <div id="input-stuff">
         <section class="location-select">
-            <p style="color:#c4a747">Where are you currently located?</p>
-            <label for="Rnumber" style="color:#c4a747">Room Location</label>
-            <select type="letter" name="number" id="Rnumber" style="width: 6em" oninput="setStart()">
-                <option value="a100">Option 1</option>
-                <option value="a200">Option 2</option>
-                <option value="a300">Option 3</option>
-                <option value="a400">Option 4</option>
-            </select>
-        </section>
-        <section class="destination-select">
-            <p style="color:#c4a747">Where would you like to go?</p>
-            <label for="Rnumber2" style="color:#c4a747">Room Location</label>
-            <select type="letter" name="number" id="Rnumber2" style="width: 6em" oninput="setFinish()">
-                <option value="a100">Option 1</option>
-                <option value="a200">Option 2</option>
-                <option value="a300">Option 3</option>
-                <option value="a400">Option 4</option>
-            </select>
+            <form autocomplete="off">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="myInput" type="text" name="myCountry" placeholder="Start Room">
+                </div>
+            </form>
+
+            <form autocomplete="off">
+                <div class="autocomplete" style="width:300px;">
+                    <input id="myInput2" type="text" name="myCountry" placeholder="End Room">
+                </div>
+            </form>
+            <input type="submit" onclick="setStart(); setFinish()">
         </section>
     </div>
+
     <script src="./lib/utils/LineUtil.Snapping.js"></script>
     <script src="./lib/utils/Marker.Snapping.js"></script>
     <script src="./lib/L.Routing.js"></script>
