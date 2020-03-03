@@ -1,9 +1,7 @@
 <head>
-
     <title>Test</title>
     <link rel="stylesheet" href="leaflet.css">
     <link rel="stylesheet" href="index.css">
-
 <!--    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />-->
 <!--    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>-->
 </head>
@@ -11,6 +9,9 @@
     <div id="Sidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="./index.html">Home</a>
+        <a href="./Individual_location/indLocation.html">Individual Location</a>
+        <a href="./Schedule_input/schedule.html">Schedule</a>
+        <a href="./Traffic/traffic.html">View Traffic</a>
         <a href="./About/about.html">About</a>
     </div>
     <div id="main">
@@ -19,47 +20,34 @@
             Menu
         </button>
     </div>
-    <div class="dropdown">
-        <button class="btn">Schedule   <i class="arrow-down"></i></button>
-        <div class="dropdown-content">
-            <section>
-                <p style="color:#c19a6b">Please input your Schedule:</p>
-                <br>
-                <label for="Rnumber1" style="color:#c19a6b">Period 1 Location : </label>
-                <input type="letter" name="number" id="Rnumber1" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber2" style="color:#c19a6b">Period 2 Location : </label>
-                <input type="letter" name="number" id="Rnumber2" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber3" style="color:#c19a6b">Period 3 Location : </label>
-                <input type="letter" name="number" id="Rnumber3" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber4" style="color:#c19a6b">Period 4 Location : </label>
-                <input type="letter" name="number" id="Rnumber4" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber5" style="color:#c19a6b">Period 5 Location : </label>
-                <input type="letter" name="number" id="Rnumber5" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber6" style="color:#c19a6b">Period 6 Location : </label>
-                <input type="letter" name="number" id="Rnumber6" style="width: 3em">
-                <br>
-                <br>
-                <label for="Rnumber7" style="color:#c19a6b">Period 7 Location : </label>
-                <input type="letter" name="number" id="Rnumber7" style="width: 3em">
-                <br>
-                <br>
-                <button class="enter">ENTER</button>
-                <br>
-                <br>
-            </section>
-        </div>
+    <div id="input-stuff">
+        <section class="location-select">
+            <p style="color:#c4a747">Where are you currently located?</p>
+            <br>
+            <br>
+            <label for="Rnumber" style="color:#c4a747">Room Location</label>
+            <select type="letter" name="number" id="Rnumber" style="width: 6em" oninput="setStart()">
+                <option value="a100">Option 1</option>
+                <option value="a200">Option 2</option>
+                <option value="a300">Option 3</option>
+                <option value="a400">Option 4</option>
+            </select>
+        </section>
+        <br>
+        <br>
+        <section class="destination-select">
+            <p style="color:#c4a747">Where would you like to go?</p>
+            <br>
+            <br>
+            <label for="Rnumber2" style="color:#c4a747">Room Location</label>
+            <select type="letter" name="number" id="Rnumber2" style="width: 6em" oninput="setFinish()">
+                <option value="a100">Option 1</option>
+                <option value="a200">Option 2</option>
+                <option value="a300">Option 3</option>
+                <option value="a400">Option 4</option>
+            </select>
+        </section>
     </div>
-
     <script src="./lib/utils/LineUtil.Snapping.js"></script>
     <script src="./lib/utils/Marker.Snapping.js"></script>
     <script src="./lib/L.Routing.js"></script>

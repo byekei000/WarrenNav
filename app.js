@@ -5,38 +5,56 @@ var L = require('leaflet');
 // var turf = require('@turf/turf');
 var PathFinder = require('geojson-path-finder');
 var geojson = require('./test.json');
+var rooms = require('./rooms.json');
 var pathFinder = new PathFinder(geojson, {precision: 1e-5});
 var map = L.map('map',{ center:[39.79130734516531, -86.00025283002853], zoom: 18});
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', { attribution: '© OpenStreetMap', maxZoom: 21, maxNativeZoom: 19, minZoom: 1}).addTo(map);
-var guide = L.geoJSON(geojson).addTo(map);
+var guide = L.geoJSON(geojson, {style: {color:"white", weight:5, fillColor:"blue"}}).addTo(map);
 var startLngLat = [-86.00126892328261, 39.79148171548422];
 var finishLngLat = [-86.00163906812668, 39.79133538772051];
 // var startPos = document.getElementById('dropdown').value;
 var startMarker = L.marker([startLngLat[1],startLngLat[0]]).addTo(map);
 var finishMarker = L.marker([finishLngLat[1],finishLngLat[0]]).addTo(map);
+console.log(rooms);
 // startPos = localStorage.getItem("start");
+window.getJson = function(){
+    return rooms;
+}
 window.hi = function(startPos){
-    if(startPos === "a100"){
-        startLngLat = [-86.00126892328261, 39.79148171548422];
-    } else if(startPos === "a200"){
-        startLngLat = [-86.00096315145493, 39.791840320236936];
-    } else if(startPos === "a300"){
-        startLngLat = [-86.00107043981552, 39.79135187537143];
-    } else if(startPos === "a400"){
-        startLngLat = [-86.00120455026627, 39.79065114672283];
+    switch(startPos){
+        // case "a100": startLngLat = [-86.00126892328261, 39.79148171548422]; break;
+        case "A309": case "A308": case "A310": startLngLat = [-86.00149422883987, 39.792005195357945]; break;
+        case "A306": case "A305": startLngLat = [-86.00132927298544, 39.79198458598944]; break;
+        case "A304": case "A302": startLngLat = [-86.00116431713104, 39.79196397661473]; break;
+        case "A311": case "A312": case "A313": startLngLat = [-86.0015344619751, 39.791834137412195]; break;
+        case "A315": case "A301": startLngLat = [-86.00136682391167, 39.79181249752128]; break;
+        case "A111": case "A112": case "A113": startLngLat = [-86.00160419940948, 39.791520873565396]; break;
+        case "A115": case "A101": case "A102": startLngLat = [-86.00126892328261, 39.79148171548422]; break;
+        case "A105": case "A104": startLngLat = [-86.00130915641783, 39.79129829049152]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+        case "A107": case "A108": case "A109": case "A110": startLngLat = [-86.00163906812668, 39.79133538772051]; break;
+
+
     }
     startMarker.setLatLng([startLngLat[1],startLngLat[0]]);
     updatePath(startLngLat[1], startLngLat[0], finishLngLat[1], finishLngLat[0]);
 };
 window.hello = function(finishPos){
-    if(finishPos === "a100"){
-        finishLngLat = [-86.00126892328261, 39.79148171548422];
-    } else if(finishPos === "a200"){
-        finishLngLat = [-86.00096315145493, 39.791840320236936];
-    } else if(finishPos === "a300"){
-        finishLngLat = [-86.00107043981552, 39.79135187537143];
-    } else if(finishPos === "a400"){
-        finishLngLat = [-86.00120455026627, 39.79065114672283];
+    switch(finishPos){
+        // case "a100": startLngLat = [-86.00126892328261, 39.79148171548422]; break;
+        case "A309": case "A308": case "A310": finishLngLat = [-86.00149422883987, 39.792005195357945]; break;
+        case "A306": case "A305": finishLngLat = [-86.00132927298544, 39.79198458598944]; break;
+        case "A304": case "A302": finishLngLat = [-86.00116431713104, 39.79196397661473]; break;
+        case "A311": case "A312": case "A313": finishLngLat = [-86.0015344619751, 39.791834137412195]; break;
+        case "A315": case "A301": finishLngLat = [-86.00136682391167, 39.79181249752128]; break;
+        case "A111": case "A112": case "A113": finishLngLat = [-86.00160419940948, 39.791520873565396]; break;
+        case "A115": case "A101": case "A102": finishLngLat = [-86.00126892328261, 39.79148171548422]; break;
+        case "A105": case "A104": finishLngLat = [-86.00130915641783, 39.79129829049152]; break;
+        case "A107": case "A108": case "A109": case "A110": finishLngLat = [-86.00163906812668, 39.79133538772051]; break;
     }
     finishMarker.setLatLng([finishLngLat[1], finishLngLat[0]]);
     updatePath(startLngLat[1], startLngLat[0], finishLngLat[1], finishLngLat[0]);
@@ -78,13 +96,15 @@ finishMarker.on('dragend', function (e) {
 });
 
 function updatePath(startlat, startlng, finishlat, finishlng){
+    startLngLat = [startlng, startlat];
+    finishLngLat = [finishlng, finishlat];
     start.geometry.coordinates = [startlng,startlat];
     finish.geometry.coordinates = [finishlng,finishlat];
     var path = pathFinder.findPath(start, finish);
     console.log(path);
     pathjson.geometry.coordinates = path.path;
     pathLayer.remove();
-    pathLayer = L.geoJSON(pathjson, {style: {color: "red"}}).addTo(map);
+    pathLayer = L.geoJSON(pathjson, {style: {color: "rgb(102, 157, 247)", weight:10}}).addTo(map);
 }
 
 var path = pathFinder.findPath(start, finish);
@@ -98,176 +118,6 @@ var pathjson = {
         "coordinates": path.path
     }
 };
-var pathLayer = L.geoJSON(pathjson, {style: {color: "red"}}).addTo(map);
+var pathLayer = L.geoJSON(pathjson, {style: {color: "lightblue"}}).addTo(map);
 
 hi();
-// var geojsonFeature = {
-//     "type": "FeatureCollection",
-//     "features": [
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Polygon",
-//                 "coordinates": [
-//                     [
-//                         [
-//                             -86.00202798843384,
-//                             39.79102830450014
-//                         ],
-//                         [
-//                             -85.99810123443604,
-//                             39.79102830450014
-//                         ],
-//                         [
-//                             -85.99810123443604,
-//                             39.79308923943747
-//                         ],
-//                         [
-//                             -86.00202798843384,
-//                             39.79308923943747
-//                         ],
-//                         [
-//                             -86.00202798843384,
-//                             39.79102830450014
-//                         ]
-//                     ]
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Polygon",
-//                 "coordinates": [
-//                     [
-//                         [
-//                             -85.99526882171631,
-//                             39.79393008315612
-//                         ],
-//                         [
-//                             -85.99681377410889,
-//                             39.79424333603115
-//                         ],
-//                         [
-//                             -85.9965991973877,
-//                             39.79302329047582
-//                         ],
-//                         [
-//                             -85.99565505981445,
-//                             39.7918856609346
-//                         ],
-//                         [
-//                             -85.99434614181519,
-//                             39.79271003204449
-//                         ],
-//                         [
-//                             -85.99526882171631,
-//                             39.79393008315612
-//                         ]
-//                     ]
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "LineString",
-//                 "coordinates": [
-//                     [
-//                         -86.00179195404051,
-//                         39.794259822985055
-//                     ],
-//                     [
-//                         -86.00492477416992,
-//                         39.792825443211484
-//                     ],
-//                     [
-//                         -86.00475311279295,
-//                         39.791044792224646
-//                     ],
-//                     [
-//                         -86.00353002548218,
-//                         39.789099213453305
-//                     ],
-//                     [
-//                         -85.99822998046875,
-//                         39.788835401926
-//                     ],
-//                     [
-//                         -85.994131565094,
-//                         39.79160537250667
-//                     ],
-//                     [
-//                         -85.99177122116089,
-//                         39.791803223280226
-//                     ],
-//                     [
-//                         -85.99730730056763,
-//                         39.79162186009287
-//                     ],
-//                     [
-//                         -85.99803686141968,
-//                         39.78959385734031
-//                     ],
-//                     [
-//                         -86.0020923614502,
-//                         39.790088497670716
-//                     ],
-//                     [
-//                         -85.99872350692749,
-//                         39.793814673842526
-//                     ]
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Point",
-//                 "coordinates": [
-//                     -86.00099802017212,
-//                     39.79449063992477
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Point",
-//                 "coordinates": [
-//                     -85.9960412979126,
-//                     39.794787403423406
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Point",
-//                 "coordinates": [
-//                     -85.99292993545531,
-//                     39.792594620683865
-//                 ]
-//             }
-//         },
-//         {
-//             "type": "Feature",
-//             "properties": {},
-//             "geometry": {
-//                 "type": "Point",
-//                 "coordinates": [
-//                     -86.00350856781006,
-//                     39.79083045149775
-//                 ]
-//             }
-//         }
-//     ]
-// };
-//
-// L.geoJSON(geojsonFeature).addTo(map);
