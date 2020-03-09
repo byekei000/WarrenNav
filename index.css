@@ -76,7 +76,6 @@ div .input-stuff{
 }
 section{
     margin: auto;
-    width: 50%;
     font-family: Futura, Trebuchet MS, Arial, sans-serif;
 }
 form{
@@ -156,4 +155,60 @@ input[type=submit] {
 .autocomplete-active {
     background-color: DodgerBlue !important;
     color: #ffffff;
+}
+
+.btn{
+    border: none;
+    background-color: black;
+    color: #c19a6b;
+    padding:14px 28px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.dropdown{
+    z-index: 1;
+    left: 1080px;
+    top: 30px;
+    position: fixed;
+    display: inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+    left: -40px;
+    text-align: center;
+}
+.dropdown-content section{
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown:hover .btn{
+    background-color: #262626;
+    color: #c19a6b;
+}
+i{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 5px solid #c19a6b;
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+.enter{
+    border: none;
+    background-color: #262626;
+    color: #c19a6b;
+    padding:14px 28px;
+    font-size: 17px;
+    cursor: pointer;
 }
